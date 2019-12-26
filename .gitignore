@@ -1,0 +1,8 @@
+
+/.vs/*
+/DateNotifier/bin
+/DateNotifier/obj
+/packages/
+*.ico
+*.txt
+*.exe
