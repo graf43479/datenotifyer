@@ -1,29 +1,28 @@
 ﻿using DateNotifier.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DateNotifier
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext<AppUser>
     {
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) 
         {
             Database.EnsureCreated();
-        }
-
-       
+        }        
 
         public DbSet<EventDate> EventDates { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<ExceptionDetail> ExceptionDetails { get; set; }
+        public DbSet<ClientProfile> ClientProfiles { get; set; }
         public DbSet<Person> Persons { get; set; }
-
-
-          protected override void OnModelCreating(ModelBuilder modelBuilder)
-          {
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
             //конфиги
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
@@ -34,9 +33,7 @@ namespace DateNotifier
             //modelBuilder.Configurations.Add(new ProductConfig());
             //modelBuilder.Configurations.Add(new ExceptionDetailConfig());
             base.OnModelCreating(modelBuilder);
-
-
-          }
+        }
           
     }
 }

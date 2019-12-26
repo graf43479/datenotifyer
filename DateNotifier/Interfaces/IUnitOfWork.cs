@@ -13,6 +13,9 @@ namespace DateNotifier.Interfaces
         IRepository<EventType> EventTypes { get; }
         IRepository<EventDate> EventDates { get; }
         IRepository<ExceptionDetail> ExceptionDetails { get; }
+
+        IRepository<ClientProfile> Clients { get; }
+
         Task SaveAsync();
     }
 }
