@@ -2,6 +2,8 @@
 /.vs/*
 /DateNotifier/bin
 /DateNotifier/obj
+/WebUI/bin
+/WebUI/obj
 /packages/
 *.ico
 *.txt
