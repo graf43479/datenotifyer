@@ -37,7 +37,7 @@ namespace UserStore.WEB
                 options.UseSqlServer(connectionString);
             });
 
-
+            services.AddTransient<IdentityUnitOfWork, IdentityUnitOfWork>();
             //services.AddSqlServerDbContextFactory<ShopDbContext>();
             //services.AddScoped<IShopEFRepository, EFRepository<ShopDbContext>>();
 

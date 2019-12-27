@@ -60,6 +60,18 @@ namespace UserStore.WEB.Controllers
                 db.EventTypes.AddRange(eventTypes);
                 db.SaveChanges();
             }
+
+            //if (!db.Persons.Any())
+            //{
+            //    List<Person> people = new List<Person>()
+            //    {
+            //        new Person{ Name = "Ivanov", ClientProfile = db.Persons.First().ClientProfile},
+            //        new Person{ Name = "Petrov",ClientProfile = db.Persons.First().ClientProfile},
+            //        new Person{ Name = "Sidorov", ClientProfile = db.Persons.First().ClientProfile}
+            //    };
+            //    db.Persons.AddRange(people);
+            //    db.SaveChanges();
+            //}
         }
     }
 }

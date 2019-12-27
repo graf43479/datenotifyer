@@ -1,0 +1,74 @@
+﻿@model Domain.Entities.EventDate
+
+<h4>EventDate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("EditDate", "Person", FormMethod.Post))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(x => x.PersonID)
+            @Html.HiddenFor(x => x.EventDateID)
+            @Html.HiddenFor(x => x.EventTypeID)
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Date, null, new { @class = "control-label" })
+                @Html.EditorFor(x => x.Date)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Prirority, null, new { @class = "control-label" })
+                @Html.EditorFor(x => x.Prirority)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.IsEnabled, null, new { @class = "control-label" })
+                @Html.EditorFor(x => x.IsEnabled)
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+
+        }
+        @*<form asp-action="CreateDate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EventDateID" class="control-label"></label>
+                <input asp-for="EventDateID" class="form-control" />
+                <span asp-validation-for="EventDateID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonID" class="control-label"></label>
+                <input asp-for="PersonID" class="form-control" />
+                <span asp-validation-for="PersonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventTypeID" class="control-label"></label>
+                <input asp-for="EventTypeID" class="form-control" />
+                <span asp-validation-for="EventTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsEnabled" /> @Html.DisplayNameFor(model => model.IsEnabled)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prirority" class="control-label"></label>
+                <input asp-for="Prirority" class="form-control" />
+                <span asp-validation-for="Prirority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>*@
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

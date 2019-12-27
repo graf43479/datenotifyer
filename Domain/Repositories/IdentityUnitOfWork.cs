@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Repositories
 {
@@ -16,7 +17,15 @@ namespace Domain.Repositories
         private EventTypeRepository eventTypeRepository;
         private PersonRepository personRepository;
 
-        public IdentityUnitOfWork(DbContextOptions<ApplicationContext> options)
+        //private AppUserManager userManager;
+        //private AppRoleManager roleManager;
+        //private ILogger<AccountController> _logger;
+        private UserManager<AppUser> userManager;
+        private RoleManager<IdentityRole> roleManager;
+        //private SignInManager<AppUser> _signInManager;
+
+
+        public IdentityUnitOfWork(DbContextOptions<ApplicationContext> options, UserManager<AppUser> uManager)
         {            
             db = new ApplicationContext(options);            
             clientRepository = new ClientRepository(db);
@@ -24,8 +33,14 @@ namespace Domain.Repositories
             eventDateRepository = new EventDateRepository(db);
             eventTypeRepository = new EventTypeRepository(db);
             personRepository = new PersonRepository(db);
+
+            userManager = uManager; //new AppUserManager(new UserStore<AppUser>(db));
+            //userManager = new AppUserManager(new UserStore<AppUser>(db));
+            // roleManager = new AppRoleManager(new RoleStore<AppRole>(db));
         }
-       
+
+        public UserManager<AppUser> UserManager => userManager;
+
         public IRepository<ClientProfile> Clients
         {
             get
