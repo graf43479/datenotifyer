@@ -17,7 +17,7 @@ namespace WebUI.Models
 
         public bool IsEnabled { get; set; }
         public int Prirority { get; set; }
-
+        public int SelectedEventTypeID { get; set; }
         public ICollection<EventType> EventTypes { get; set; }
     }
 }

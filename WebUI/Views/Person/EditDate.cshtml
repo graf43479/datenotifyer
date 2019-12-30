@@ -1,4 +1,4 @@
-﻿@model Domain.Entities.EventDate
+﻿@model WebUI.Models.EventDateViewModel
 
 <h4>EventDate</h4>
 <hr />
@@ -23,7 +23,11 @@
                 @Html.LabelFor(x => x.IsEnabled, null, new { @class = "control-label" })
                 @Html.EditorFor(x => x.IsEnabled)
             </div>
-            
+            <div class="form-group">
+                @*@Html.LabelFor(x => x.IsEnabled, null, new { @class = "control-label" })*@
+                @*@Html.DropDownListFor(x => x.SelectedEventType, new SelectList(Model.EventTypes, "EventTypeID","EventTypeName", Model.SelectedEventType))*@
+                @Html.DropDownListFor(x=>x.SelectedEventTypeID, WebUI.HtmlHelpers.GetAllEventTypes(Model.EventTypes))
+            </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>

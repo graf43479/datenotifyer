@@ -1,58 +1,84 @@
-﻿@model IEnumerable<Domain.Entities.EventDate>
+﻿@model WebUI.Models.PersonEventsViewModel
 
-<p>
-    <a asp-action="CreateDate">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EventDateID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PersonID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventTypeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsEnabled)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prirority)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventDateID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PersonID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventTypeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsEnabled)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prirority)
-            </td>
-            <td>
-                @Html.ActionLink("EditDate", "EditDate", new { eventdateId=item.EventDateID }) |                
-                @Html.ActionLink("DeleteDate", "DeleteDate", new { eventdateId=item.EventDateID })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        @*<a asp-action="CreateDate">Create New</a>*@
+        @Html.ActionLink("CreateDate", "CreateDate", new { personID = Model.Person.PersonID}) 
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("EventDateID")
+                </th>
+                <th>
+                    @Html.DisplayName("PersonID")
+                </th>
+                <th>
+                    @Html.DisplayName("EventTypeID")
+                </th>
+                <th>
+                    @Html.DisplayName("Date")
+                </th>
+                <th>
+                    @Html.DisplayName("IsEnabled")
+                </th>
+                <th>
+                    @Html.DisplayName("Prirority")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventDateID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PersonID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventTypeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsEnabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prirority)
+                </th>
+                <th></th>
+            </tr>
+        </thead>*@
+        <tbody>
+            @foreach (var item in Model.EventDates)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventDateID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Person.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventType.EventName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsEnabled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prirority)
+                    </td>
+                    <td>
+                        @Html.ActionLink("EditDate", "EditDate", new { eventdateId = item.EventDateID }) |
+                        @Html.ActionLink("DeleteDate", "DeleteDate", new { eventdateId = item.EventDateID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

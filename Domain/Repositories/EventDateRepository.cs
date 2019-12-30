@@ -43,7 +43,7 @@ namespace Domain.Repositories
 
         public IEnumerable<EventDate> GetAll()
         {
-            return db.EventDates;
+            return db.EventDates.Include(x=>x.EventType);
         }
 
         public EventDate Get(int id)

@@ -1,7 +1,7 @@
 
 /.vs/*
-/DateNotifier/bin
-/DateNotifier/obj
+/Domain/bin
+/Domain/obj
 /WebUI/bin
 /WebUI/obj
 /packages/
